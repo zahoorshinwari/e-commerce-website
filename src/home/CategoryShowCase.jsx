@@ -19,8 +19,8 @@ const CategoryShowCase = () => {
     const [items, setItems] = useState(ProductData);
 
     // category based on filtering
-    const filterItem = (category) => {
-        const filteredItems = ProductData.filter(item => item.cate === category);
+    const filterItem = (categoryItem) => {
+        const filteredItems = ProductData.filter(item => item.cate === categoryItem);
         setItems(filteredItems);
     };
 
@@ -41,7 +41,7 @@ const CategoryShowCase = () => {
                     <h2>{title}</h2>
                     <div className='course-filter-group'>
                         <ul className='lab-ul'>
-                            <li onClick={() => filterItem("All")}>All</li>
+                            <li onClick={() => setItems(ProductData)}>All</li>
                             <li onClick={() => filterItem("Shoes")}>Shoes</li>
                             <li onClick={() => filterItem("Bags")}>Bags</li>
                             <li onClick={() => filterItem("Phones")}>Phones</li>
