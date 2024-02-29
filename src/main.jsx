@@ -22,6 +22,7 @@ import './index.css'
 import { element } from 'prop-types';
 import Home from './home/Home.jsx';
 import Blog from './blog/Blog.jsx';
+import Shop from './shop/Shop.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,9 +30,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {path: "/", element: <Home />},
-      {path: "/blog", element: <Blog />}
+      {path: "/blog", element: <Blog />},
+      {path: "/shop", element: <Shop />}
     ]
   },
+  
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
