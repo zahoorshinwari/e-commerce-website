@@ -47,7 +47,7 @@ const AboutUs = () => {
                     </div>
 
                     <div className='col'>
-                        <img src="/src/assets/images/instructor/01.png" alt="" />
+                        <img src="/src/assets/images/instructor/001.png" alt="" />
                     </div>
                 </div>
             </div>

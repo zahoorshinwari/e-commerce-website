@@ -4,6 +4,7 @@ import Data from "../products.json"
 import ProductCards from './ProductCards'
 import Pagination from './Pagination'
 import Search from './Search'
+import ShopCategory from './ShopCategory'
 
 const showResults = "Showing 01 - 12 of 139 Results"
 
@@ -21,11 +22,23 @@ const Shop = () => {
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage
-    const currentProducts =products.slice(indexOfFirstProduct, indexOfLastProduct)
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
 
     // function to change the current page of pagination
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber)
+    }
+
+    // filter products based on category
+    const [selectedCategory, setSelectedCategory] = useState("All")
+    const menuItems = [...new Set(Data.map((val) => val.category))]
+
+    const filterItems = (current) => {
+        const newItems = Data.filter((newVal) => {
+            return newVal.category === current
+        })
+        setSelectedCategory(current)
+        setProducts(newItems)
     }
 
     return (
@@ -39,7 +52,7 @@ const Shop = () => {
                         <div className="col-lg-8 col-12">
                             {/* left side */}
                             <article>
-                                 {/* layout and title here */}
+                                {/* layout and title here */}
                                 <div className="shop-title d-flex flex-wrap justify-content-between">
                                     <p>{showResults}</p>
                                     <div className={`product-view-mode ${GridList ? "gridActive" : "listActive"}`}>
@@ -58,12 +71,13 @@ const Shop = () => {
                                     <ProductCards GridList={GridList} products={currentProducts} />
                                 </div>
 
-                                <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} activePage={currentPage}/>
+                                <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} activePage={currentPage} />
                             </article>
                         </div>
                         <div className="col-lg-4 col-12">
                             <aside>
-                                <Search products={products} GridList={GridList}/>
+                                <Search products={products} GridList={GridList} />
+                                <ShopCategory filterItems={filterItems} setItem={setProducts} menuItems={menuItems} setProducts={setProducts} selectedCategory={selectedCategory}/>
                             </aside>
                         </div>
 
