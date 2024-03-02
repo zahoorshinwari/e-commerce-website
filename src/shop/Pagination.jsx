@@ -7,7 +7,7 @@ const Pagination = ({productsPerPage, totalProducts, paginate, activePage }) => 
         pageNumber.push(i)
     }
 
-    console.log(pageNumber);
+    // console.log(pageNumber);
 
   return (
     <ul className='default-pagination lab-ul'>
