@@ -6,6 +6,7 @@ import Pagination from './Pagination'
 import Search from './Search'
 import ShopCategory from './ShopCategory'
 import PopularPost from './PopularPost'
+import Tags from './Tags'
 
 const showResults = "Showing 01 - 12 of 139 Results"
 
@@ -82,6 +83,9 @@ const Shop = () => {
 
                                 {/* popular post are here */}
                                 <PopularPost />
+
+                                {/* tags are here */}
+                                <Tags />
                             </aside>
                         </div>
 
